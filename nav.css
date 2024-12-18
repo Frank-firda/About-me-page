@@ -1,0 +1,28 @@
+.header-button{
+    font-size: 1em;
+    display: inline-block;
+    text-align: center;
+    width: 10vw;
+    background-color: darkgrey;
+    color: white;
+    margin: auto;
+    text-decoration: none;
+    border-radius: 5px;
+}
+#homepage{
+    width: 15vw;
+}
+header {
+    display: flex;
+    background-color: #f4f4f4;
+    color: #333;
+    padding: 10px 0;
+}
+a:hover{
+    width: 11vw;
+    transition: 1s;
+}
+#homepage:hover{
+    width: 16vw;
+    transition: 1s;
+}

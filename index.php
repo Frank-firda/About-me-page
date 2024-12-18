@@ -7,13 +7,17 @@
     <link rel="icon" href="icons/racing-icon.png"
 </head>
 <body>
-    <header><a></a>
-        <a class="header-button" id="html" href="languages/html.php"> <h1>html</h1> </a>
-        <a class="header-button" id="css" href="languages/css.php"> <h1>css</h1> </a>
-        <a class="header-button" id="homepage" href="index.php"> <h1>homepage</h1> </a>
-        <a class="header-button" id="php" href="languages/php.php.php"> <h1>php</h1> </a>
-        <a class="header-button" id="sql" href="languages/sql.php"> <h1>sql</h1> </a>
-    </header>
+    <?php
+    $nav = array(
+            array("languages/html.php", "<h1>html</h1>"),
+            array("languages/css.php", "<h1>css</h1>"),
+            array("login.php", "<h1>login</h1>"),
+            array("languages/php.php", "<h1>php</h1>"),
+            array("languages/sql.php", "<h1>sql</h1>"),
+            array(main)
+    );
+    include './nav.php';
+    ?>
     <main>
 
     </main>
