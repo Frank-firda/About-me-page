@@ -8,12 +8,11 @@
 </head>
     <?php
     $nav = array(
-        array("languages/html.php", "<h1>html</h1>"),
-        array("languages/css.php", "<h1>css</h1>"),
-        array("login.php", "<h1>login</h1>"),
-        array("languages/php.php", "<h1>php</h1>"),
-        array("languages/sql.php", "<h1>sql</h1>"),
-        array(sub)
+        array("./html.php", "<h1>html</h1>"),
+        array("./css.php", "<h1>css</h1>"),
+        array("../login.php", "<h1>login</h1>"),
+        array("./php.php", "<h1>php</h1>"),
+        array("./sql.php", "<h1>sql</h1>"),
     );
     include '../nav.php';
     ?>
