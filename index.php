@@ -15,7 +15,7 @@
             array("languages/php.php", "<h1>php</h1>"),
             array("languages/sql.php", "<h1>sql</h1>"),
     );
-    include './nav.php';
+    include './nav.php'; 
     ?>
     <main>
 
