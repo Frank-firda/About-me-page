@@ -1,0 +1,63 @@
+body {
+    background-image: url("./pictures/login-background.png");
+    background-size: 100vw 100vh;
+}
+#login-page{
+    font-family: poppins;
+    width: 30vw;
+    height: 65vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    margin-top: 5vh;
+    background-color: #f4f4f4;
+    border-radius: 0.833vw;
+}
+#name{
+    font-size: 1.35vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 75%;
+    height: 25%;
+}
+#password{
+    font-size: 1.35vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 75%;
+    height: 25%;
+}
+.input{
+    width: 80%;
+    height: 30%;
+    margin: auto;
+    margin-top: 5%;
+    border-radius: 0.26vw;
+    border: 0.052vw solid #333;
+}
+#login{
+    width: 50%;
+    height: 10%;
+    font-size: 1.25vw;
+    background-color: #333;
+    color: white;
+    border-radius: 0.833vw;
+}
+#register{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    width: 50%;
+    height: 10%;
+    font-size: 1.25vw;
+    background-color: #333;
+    color: white;
+    border-radius: 0.833vw;
+}
