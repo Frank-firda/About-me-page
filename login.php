@@ -43,6 +43,5 @@
             <p>geen account?</p>
             <a id="register" href="register.php">registreer</a>
         </form>
-
 </body>
 </html>
