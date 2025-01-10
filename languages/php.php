@@ -1,3 +1,12 @@
+<?php
+function getfromdb()
+{
+    $pdo = new PDO('mysql:hots=localhost;dbname=about-me-page;port=3306', 'root', '');
+    $stmt = $pdo->prepare("SELECT * FROM code WHERE language = 3");
+    $stmt->execute();
+    return $stmt->fetchAll();
+}
+?>
 <html lang="en">
 <head>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -6,7 +15,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>php</title>
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="./style-languages/php.css">
     <link rel="icon" href="../icons/php.png">
 </head>
     <?php
@@ -20,6 +29,27 @@
     include '../nav.php';
     ?>
 <body>
-
+    <h1>php cheatsheet</h1>
+    <?php
+    $code = getfromdb();
+    foreach ($code as $item) {
+        echo <<<HTML
+        <div class="item">
+            <div class="item-title">
+                <h2>{$item['Title']}</h2>
+                <h3>{$item['ID']}</h3>
+            </div>
+            <div class="block">
+                <div class="code-block">
+                    {$item['Carbon-Code']}
+                </div>
+                <div class ="resultaat-block">
+                    <p>{$item['Description']}</p>
+                </div>
+            </div>
+        </div>
+HTML;
+    }
+    ?>
 </body>
 </html>

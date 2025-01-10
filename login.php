@@ -29,16 +29,16 @@
     include './nav.php';
     ?>
 <body>
-        <form id="login-page" method="post">
-            <div id="name">
-                <label for="gebruikersnaam">gebruikersnaam:</label>
-                <input type="text" name="gebruikersnaam" class="input" required>
+        <form id="login-page" method="post" action="./beheer.php">
+            <div id="username">
+                <label for="username">gebruikersnaam:</label>
+                <input type="text" name="username" class="input" required>
             </div>
             <div id="password">
-                <label for="wachtwoord">wachtwoord:</label>
-                <input type="text" name="wachtwoord" class="input" required>
+                <label for="password">wachtwoord:</label>
+                <input type="text" name="password" class="input" required>
             </div>
-            <input type="submit" value="login" id="login">
+            <input type="submit" value="login" id="register">
             <br>
             <p>geen account?</p>
             <a id="register" href="register.php">registreer</a>

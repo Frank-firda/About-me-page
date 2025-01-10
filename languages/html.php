@@ -1,5 +1,4 @@
 <?php
-require_once __DIR__ . "/../helpers.php";
     function getfromdb()
     {
         $pdo = new PDO('mysql:hots=localhost;dbname=about-me-page;port=3306', 'root', '');
@@ -31,7 +30,6 @@ require_once __DIR__ . "/../helpers.php";
     ?>
 <body>
     <h1>html cheatsheet</h1>
-
         <?php
         $code = getfromdb();
         foreach ($code as $item) {
