@@ -12,8 +12,8 @@ function validation(){
     if (empty($_POST["gebruikersnaam"])) {
         $errors['gebruikersnaam'] = "gebruikersnaam verplicht";
     }
-    if (empty($_POST["wachtwoord"])) {
-        $errors['wachtwoord'] = "wachtwoord verplicht";
+    if (empty($_POST["password"])) {
+        $errors['password'] = "wachtwoord verplicht";
     }
 }
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -52,7 +52,7 @@ include './nav.php';
             <label for="password">wachtwoord:</label>
             <input type="password" name="password" class="input" required>
         </div>
-        <input type="submit" value="login" id="register">
+        <input type="submit" value="Registreer" id="register">
     </form>
 
 </body>
