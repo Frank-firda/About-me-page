@@ -1,3 +1,12 @@
+<?php
+    $pdo = new PDO('mysql:hots=localhost;dbname=about-me-page;port=3306', 'root', '');
+    function GetAllUsers(){
+        global $pdo;
+        $stmt = $pdo->prepare("SELECT * FROM accounts");
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,6 +16,37 @@
     <link rel="icon" href="./icons/beheer.png">
 </head>
 <body>
+<?php
+    $nav = array(
+        array("languages/html.php", "<h1>manage html</h1>"),
+        array("languages/css.php", "<h1>manage css</h1>"),
+        array("beheer.php", "<h1>beheer home</h1>"),
+        array("languages/php.php", "<h1>manage php</h1>"),
+        array("languages/sql.php", "<h1>manage sql</h1>"),
+    );
+    include './nav.php';
+?>
     <h1>Beheer pagina</h1>
+    <table>
+        <tr>
+            <th>username</th>
+            <th>password</th>
+            <th>type</th>
+        </tr>
+        <?php
+
+            $users = GetAllUsers();
+        print_r($users);
+            foreach($users as $user){
+                echo "<tr>";
+                echo "<td>" . $user['username'] . "</td>";
+                echo "<td>" . $user['password'] . "</td>";
+                echo "<td>" . $user['Type'] . "</td>";
+                echo "<td><a href='update-user.php?id=".$user['account_id']."'>update</a></td>";
+                echo "</tr>";
+            }
+            ?>
+    </table>
+
 </body>
 </html>

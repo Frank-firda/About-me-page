@@ -42,7 +42,7 @@ $nav = array(
 include './nav.php';
 ?>
 <body>
-    <form id="register-page" method="post">
+    <form id="register-page" method="post" action="./">
         <h2 id="title-text">account verzoek aanmaken:</h2>
         <div id="username">
             <label for="username">gebruikersnaam:</label>
