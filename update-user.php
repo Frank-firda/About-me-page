@@ -1,12 +1,15 @@
 <?php
 $pdo = new PDO('mysql:hots=localhost;dbname=about-me-page;port=3306', 'root', '');
-$user = $_GET['id'];
+$pdo ->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+//$user = $_GET['id'];
+$user = 15;
 echo $user;
-function get(){
-        global $pdo;
-        $stmt = $pdo->prepare("SELECT * FROM accounts WHERE ID = :user");
-        $stmt->execute(['user' => $user]);
-        return $stmt->fetchAll();}
+function GetUfromdb($user) {
+    global $pdo;
+    $stmt = $pdo->prepare("SELECT * FROM accounts WHERE account_id = :user");
+    $stmt->execute(['user' => $user]);
+    return $stmt->fetch();
+}
 function update(){
         global $pdo;
         $stmt = $pdo->
@@ -26,12 +29,16 @@ function update(){
     <title>User updater</title>
 </head>
 <body>
-<form action="get">
-    <input name="username" type="text">
-    <label for="username"></label>
-    <input name="password" type="text">
-    <label for="password"></label>
-    <input name="type" type="text">
+<form>
+    <?php
+    $gebruiker = GetUfromdb($user);
+    ?>
+    <input name="username" type="text" value="<?=$gebruiker['username']?>">
+    <label for="username"><?=$gebruiker['username']?></label>
+    <input name="password" type="text" value="<?=$gebruiker['username']?>">
+    <label for="password"><?=$gebruiker['password']?></label>
+    <input name="type" type="number" min="1" max="2" value="<?=$gebruiker['username']?>">
+    <label for="type"><?=$gebruiker['Type']?></label>
 </form>
 </body>
 </html>
