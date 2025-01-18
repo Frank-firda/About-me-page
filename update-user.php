@@ -1,22 +1,29 @@
 <?php
 $pdo = new PDO('mysql:hots=localhost;dbname=about-me-page;port=3306', 'root', '');
 $pdo ->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-//$user = $_GET['id'];
-$user = 15;
+$user = $_GET['id'];
 echo $user;
 function GetUfromdb($user) {
     global $pdo;
     $stmt = $pdo->prepare("SELECT * FROM accounts WHERE account_id = :user");
-    $stmt->execute(['user' => $user]);
+    $stmt->bindValue(':user', $user);
+    $stmt->execute();
     return $stmt->fetch();
 }
-function update(){
-        global $pdo;
-        $stmt = $pdo->
-        $stmt->execute();
+function update($user) {
+    global $pdo;
+    $stmt = $pdo->prepare("UPDATE accounts SET username = :username, password = :password, Type = :type WHERE account_id = :user");
+    $stmt->bindValue(':username', $_POST['username']);
+    $stmt->bindValue(':password', $_POST['password']);
+    $stmt->bindValue(':type', intval($_POST['type']));
+    $stmt->bindValue(':user', $user);
+    $stmt->execute();
 }
-
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    update($user);
+}
 ?>
+
 
 <html lang="en">
 <head>
@@ -29,16 +36,25 @@ function update(){
     <title>User updater</title>
 </head>
 <body>
-<form>
-    <?php
-    $gebruiker = GetUfromdb($user);
-    ?>
-    <input name="username" type="text" value="<?=$gebruiker['username']?>">
-    <label for="username"><?=$gebruiker['username']?></label>
-    <input name="password" type="text" value="<?=$gebruiker['username']?>">
-    <label for="password"><?=$gebruiker['password']?></label>
-    <input name="type" type="number" min="1" max="2" value="<?=$gebruiker['username']?>">
-    <label for="type"><?=$gebruiker['Type']?></label>
-</form>
+<?php
+$gebruiker = GetUfromdb($user);
+?>
+    <form action="update-user.php?id=<?=$user?>" method="POST">
+        <div>
+            <label for="username">verander naam</label>
+            <input id="username" name="username" type="text" value="<?=$gebruiker['username']?>">
+        </div>
+        <div>
+            <label for="password">verander wachtwoord</label>
+            <input id="password" name="password" type="text" value="<?=$gebruiker['password']?>">
+        </div>
+        <div>
+            <label for="type">Soort gebruiker</label>
+            <input id="type" name="type" type="number" min="1" max="2" value="<?=$gebruiker['Type']?>">
+        </div>
+        <div>
+            <input type="submit">
+        </div>
+    </form>
 </body>
 </html>

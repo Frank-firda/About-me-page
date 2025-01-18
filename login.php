@@ -1,4 +1,21 @@
 <?php
+session_start();
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+    echo 'post';
+    $user = $_POST['username'];
+    $password = $_POST['password'];
+
+    // select query
+
+    // error weergeven als verkeerd
+
+    // set session username
+
+    // door naar volgende pagina
+}
+
+
 //    $pdo = new PDO('mysql:hots=localhost;dbname=login;port=3306', 'root', '');
 //    function checknw(){
 //
