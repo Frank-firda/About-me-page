@@ -1,4 +1,6 @@
 <?php
+$pdo = new PDO('mysql:hots=localhost;dbname=login;port=3306', 'root', '');
+
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){
@@ -7,6 +9,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     $password = $_POST['password'];
 
     // select query
+    SELECT * FROM accounts WHARE username = $user AND password = $password
+
 
     // error weergeven als verkeerd
 
