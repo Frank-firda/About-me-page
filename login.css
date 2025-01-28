@@ -61,3 +61,7 @@ body {
     color: white;
     border-radius: 0.833vw;
 }
+.error{
+    color: red;
+    text-decoration-line: underline;
+}

@@ -2,6 +2,10 @@ body {
     background-image: url("./pictures/login-background.png");
     background-size: 100vw 100vh;
 }
+.error{
+    color: red;
+}
+
 #register-page{
     font-family: poppins;
     width: 30vw;

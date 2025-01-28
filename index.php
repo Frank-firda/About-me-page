@@ -21,8 +21,15 @@
     include './nav.php'; 
     ?>
     <main>
+        <div id="PIC-main">
+
+        </div>
+
         
     </main>
 </body>
+<?php
+include './footer.html';
+?>
 </html>
 

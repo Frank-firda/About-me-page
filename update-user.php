@@ -33,6 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="updater.css">
+    <link rel="icon" href="./icons/beheer.png">
     <title>User updater</title>
 </head>
 <body>

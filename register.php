@@ -1,23 +1,29 @@
 <?php
 function savetodb(){
-    $pdo = new PDO('mysql:hots=localhost;dbname=about-me-page;port=3306', 'root', '');
+    $pdo = new PDO('mysql:host=localhost;dbname=about-me-page;port=3306', 'root', '');
     $stmt = $pdo->prepare("INSERT INTO accounts (username, password, type) VALUES (:username, :password, :type)");
     $stmt->execute([
         'username' => $_POST['username'],
         'password' => $_POST['password'],
         'type' => 1
     ]);
+    header("Location: completed.php");
+    exit;
 }
-function validation(){
-    if (empty($_POST["gebruikersnaam"])) {
-        $errors['gebruikersnaam'] = "gebruikersnaam verplicht";
+
+function validate() : bool {
+    global $error;
+    if (empty($_POST["username"]) or empty($_POST["password"]))  {
+        $error['username'] = "Beide velden moeten ingevuld zijn";
+        return false;
     }
-    if (empty($_POST["password"])) {
-        $errors['password'] = "wachtwoord verplicht";
-    }
+    return true;
 }
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    savetodb();
+    if(validate()) {
+        savetodb();
+    }
+
 }
 ?>
 <html lang="en">
@@ -42,15 +48,16 @@ $nav = array(
 include './nav.php';
 ?>
 <body>
-    <form id="register-page" method="post" action="./">
+    <form id="register-page" method="post" action="register.php">
         <h2 id="title-text">account verzoek aanmaken:</h2>
         <div id="username">
             <label for="username">gebruikersnaam:</label>
-            <input type="text" name="username" class="input" required>
+            <input type="text" name="username" class="input">
+            <?php if (isset($error['username'])) echo "<span class=\"error\">" . $error['username'] . "</span>"; ?>
         </div>
         <div id="password">
             <label for="password">wachtwoord:</label>
-            <input type="password" name="password" class="input" required>
+            <input type="password" name="password" class="input">
         </div>
         <input type="submit" value="Registreer" id="register">
     </form>

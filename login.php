@@ -1,33 +1,37 @@
 <?php
-$pdo = new PDO('mysql:hots=localhost;dbname=login;port=3306', 'root', '');
-
 session_start();
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST'){
-    echo 'post';
-    $user = $_POST['username'];
-    $password = $_POST['password'];
-
-    // select query
-    SELECT * FROM accounts WHARE username = $user AND password = $password
-
-
-    // error weergeven als verkeerd
-
-    // set session username
-
-    // door naar volgende pagina
+$error = '';
+function DBCHECK($user, $password){
+    global $pdo;
+    $stmt = $pdo->prepare("SELECT * FROM accounts WHERE username = :username AND password = :password AND Type = 2");
+    $stmt->bindParam(':username', $user);
+    $stmt->bindParam(':password', $password);
+    $stmt->execute();
+    return $stmt->fetchAll();
 }
-
-
-//    $pdo = new PDO('mysql:hots=localhost;dbname=login;port=3306', 'root', '');
-//    function checknw(){
-//
-//    }
-//   if ($_SERVER["resuest_method"] == "post") {
-//
-//   }
-//?>
+function verification($login, $user, $password){
+    if ($user == $login[0]['username'] && $password == $login[0]['password']) {
+        $_SESSION[$user] = $login[0]['username'];
+        return true;
+    }
+    else{
+       return false;
+    }
+}
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $pdo = new PDO('mysql:host=localhost;dbname=about-me-page;port=3306', 'root', '');
+    $login = DBCHECK($_POST['username'] ?? '', $_POST['password'] ?? '');
+    if (!empty($login)){
+       if(verification($login, $_POST['username'] ?? '', $_POST['password'] ?? '')){
+           header("Location: ./beheer.php");
+       }else{
+           $error = 'Er is iets onmogelijks gebeurt!';
+       }
+    }else{
+        $error = "gebruikersnaam en of wachtwoord fout.";
+    }
+}
+?>
 <html lang="en">
 <head>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -50,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     include './nav.php';
     ?>
 <body>
-        <form id="login-page" method="post" action="./beheer.php">
+        <form id="login-page" method="post" action="">
             <div id="username">
                 <label for="username">gebruikersnaam:</label>
                 <input type="text" name="username" class="input" required>
@@ -59,6 +63,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
                 <label for="password">wachtwoord:</label>
                 <input type="text" name="password" class="input" required>
             </div>
+            <?php if($error != ""):?>
+                <div class="error">
+                    <?=$error;?>
+                </div>
+            <?php endif;?>
             <input type="submit" value="login" id="register">
             <br>
             <p>geen account?</p>
