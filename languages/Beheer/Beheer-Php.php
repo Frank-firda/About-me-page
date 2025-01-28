@@ -7,6 +7,7 @@ $pdo = new PDO('mysql:host=localhost;dbname=about-me-page;port=3306', 'root', ''
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Beheer php</title>
     <link rel="icon" href="../../icons/php.png">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <?php
@@ -19,15 +20,17 @@ $nav = array(
 );
 include '../../nav.php';
 ?>
-<form method="get">
-    <label for="titel">titel
-    <input name="titel" type="text">
-    <label for="omschrijving">omschrijving</label>
-    <input name="omschrijving" type="text">
-    <label for="carboncode">Carbon iFrame</label>
-    <input name="carboncode" type="text">
+<div id="form">
+    <form method="get">
+        <label for="titel">titel
+        <input name="titel" type="text">
+        <label for="omschrijving">omschrijving</label>
+        <input name="omschrijving" type="text">
+        <label for="carboncode">Carbon iFrame</label>
+        <textarea name="carboncode" cols="30" rows="10"></textarea>
+        <input type="hidden" value="3">
         <input type="submit">
-</form>
-
+    </form>
+</div>
 </body>
 </html>
