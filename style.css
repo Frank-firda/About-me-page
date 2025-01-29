@@ -1,7 +1,14 @@
+*{
+    font-family: 'Poppins', sans-serif;
+}
 #PIC-main{
     margin: auto;
     background-image: url("./pictures/iracing.jpg");
     align-self: center;
     height: 23.49vw;
     width: 56.25vw;
+}
+#intro{
+    max-width: 80vw;
+    margin: auto;
 }

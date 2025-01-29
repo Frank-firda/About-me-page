@@ -7,13 +7,13 @@ footer{
     left: 0;
     bottom: 0;
 }
-#box{
+#footer-box1{
     display: flex;
     justify-content: center;
     text-align: center;
     height: 90%;
 }
-#bottom-box{
+#footer-box{
     text-decoration-line: underline;
     text-align: center;
     width: 100vw;

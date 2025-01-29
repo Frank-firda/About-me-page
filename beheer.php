@@ -1,4 +1,5 @@
 <?php
+session_start();
     $pdo = new PDO('mysql:hots=localhost;dbname=about-me-page;port=3306', 'root', '');
     function GetAllUsers(){
         global $pdo;
@@ -26,7 +27,16 @@
     );
     include './nav.php';
 ?>
+    <h1>hallo <?=$_SESSION['gebruiksnaam']?></h1>
     <h1>Beheer pagina</h1>
+    <a id="logoutknop" href="logout.php">Uitloggen</a>
+<?php
+ if($_SESSION['Type'] === 3){
+     echo "<a href='fotos.php'>Fotos</a>";
+ }
+?>
+<?php
+?>
     <table>
         <tr>
             <th>username</th>
@@ -34,7 +44,6 @@
             <th>type</th>
         </tr>
         <?php
-
             $users = GetAllUsers();
             foreach($users as $user){
                 echo "<tr>";
@@ -46,6 +55,5 @@
             }
             ?>
     </table>
-
 </body>
 </html>

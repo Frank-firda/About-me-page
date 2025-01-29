@@ -10,7 +10,6 @@
         <link rel="stylesheet" href="completed.css">
         <link rel="icon" href="icons/checkmark.png">
         <link rel="stylesheet" href="login.css">
-
     </head>
 </head>
 <body>

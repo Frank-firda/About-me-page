@@ -3,7 +3,7 @@ session_start();
 $error = '';
 function DBCHECK($user, $password){
     global $pdo;
-    $stmt = $pdo->prepare("SELECT * FROM accounts WHERE username = :username AND password = :password AND Type = 2");
+    $stmt = $pdo->prepare("SELECT * FROM accounts WHERE username = :username AND password = :password AND Type = 2 OR Type = 3");
     $stmt->bindParam(':username', $user);
     $stmt->bindParam(':password', $password);
     $stmt->execute();
@@ -11,7 +11,8 @@ function DBCHECK($user, $password){
 }
 function verification($login, $user, $password){
     if ($user == $login[0]['username'] && $password == $login[0]['password']) {
-        $_SESSION[$user] = $login[0]['username'];
+        $_SESSION['gebruiksnaam'] = $login[0]['username'];
+        $_SESSION['id'] = $login[0]['Type'];
         return true;
     }
     else{
@@ -61,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
             <div id="password">
                 <label for="password">wachtwoord:</label>
-                <input type="text" name="password" class="input" required>
+                <input type="password" name="password" class="input" required>
             </div>
             <?php if($error != ""):?>
                 <div class="error">

@@ -23,8 +23,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     update($user);
 }
 ?>
-
-
 <html lang="en">
 <head>
     <link rel="preconnect" href="https://fonts.googleapis.com">

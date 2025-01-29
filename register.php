@@ -10,7 +10,6 @@ function savetodb(){
     header("Location: completed.php");
     exit;
 }
-
 function validate() : bool {
     global $error;
     if (empty($_POST["username"]) or empty($_POST["password"]))  {
@@ -23,7 +22,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if(validate()) {
         savetodb();
     }
-
 }
 ?>
 <html lang="en">
@@ -61,6 +59,5 @@ include './nav.php';
         </div>
         <input type="submit" value="Registreer" id="register">
     </form>
-
 </body>
 </html>

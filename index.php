@@ -22,14 +22,20 @@
     ?>
     <main>
         <div id="PIC-main">
-
         </div>
-
-        
+        <div id="intro">
+            <h1>About-me-page van frank aukema!</h1>
+            <br>
+            <h2>Wie ben ik?</h2>
+            <h3>Ik ben Frank Aukema 16 jaar oud en ik ben student Software Developer bij Firda Sneek.</h3>
+            <h2>Waarvoor is deze website?</h2>
+            <h3>Deze website is bedoeld als een persoonlijke cheatsheet</h3>
+            <h2>Waar kan ik deze cheatsheets vinden?</h2>
+            <h3>Je kan de cheatsheets vinden boven aan je beeldscherm in de header</h3>
+            <h2>Kan ik ook informatie toevoegen aan de cheatsheets?</h2>
+            <h3>Ja dat kan. Als u dit wilt doen moet u een accountverzoek doen. Dit kan u doen om op inloggen boven aan de pagina te klikken en dan op registreren te klikken</h3>
+        </div>
     </main>
 </body>
-<?php
-include './footer.html';
-?>
 </html>
 
