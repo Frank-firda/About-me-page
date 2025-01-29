@@ -1,5 +1,16 @@
 <?php
+session_start();
 $pdo = new PDO('mysql:host=localhost;dbname=about-me-page;port=3306', 'root', '');
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    global $pdo;
+    $stmt = $pdo->prepare("INSERT INTO `code`(`Title`, `Carbon-Code`, `Description`, `Language`) VALUES ('Title','Carbon-Code','Description','Language')");
+    $stmt->execute([
+        'Title' => $_POST['titel'],
+        'Carbon-Code' => $_POST['carboncode'],
+        'Description' => $_POST['omschrijving'],
+        'Language' => $_POST['taal']
+    ]);
+}
 ?>
 <html lang="en">
 <head>
