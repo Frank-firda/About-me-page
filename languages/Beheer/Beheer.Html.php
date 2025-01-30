@@ -32,7 +32,7 @@ $nav = array(
 include '../../nav.php';
 ?>
 <div id="form">
-    <form method="get">
+    <form method="post">
         <label for="titel">titel
             <input name="titel" type="text">
             <label for="omschrijving">omschrijving</label>
