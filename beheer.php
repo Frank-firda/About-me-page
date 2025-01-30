@@ -30,13 +30,6 @@ session_start();
     <h1>hallo <?=$_SESSION['gebruiksnaam']?></h1>
     <h1>Beheer pagina</h1>
     <a id="logoutknop" href="logout.php">Uitloggen</a>
-<?php
- if($_SESSION['Type'] === 3){
-     echo "<a href='fotos.php'>Fotos</a>";
- }
-?>
-<?php
-?>
     <table>
         <tr>
             <th>username</th>
