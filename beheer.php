@@ -31,21 +31,21 @@ session_start();
     <h1>Beheer pagina</h1>
     <a id="logoutknop" href="logout.php">Uitloggen</a>
     <table>
-        <tr>
-            <th>username</th>
-            <th>password</th>
-            <th>type</th>
-        </tr>
         <?php
             $users = GetAllUsers();
-            foreach($users as $user){
                 echo "<tr>";
-                echo "<td>" . $user['username'] . "</td>";
-                echo "<td>" . $user['password'] . "</td>";
-                echo "<td>" . $user['Type'] . "</td>";
-                echo "<td><a href='update-user.php?id=".$user['account_id']."'>update</a></td>";
+                echo "<th>username</th>";
+                echo "<th>password</th>";
+                echo "<th>type</th>";
                 echo "</tr>";
-            }
+                foreach($users as $user){
+                        echo "<tr>";
+                        echo "<td>" . $user['username'] . "</td>";
+                        echo "<td>" . $user['password'] . "</td>";
+                        echo "<td>" . $user['Type'] . "</td>";
+                        echo "<td><a href='update-user.php?id=" . $user['account_id'] . "'>update</a></td>";
+                        echo "</tr>";
+                }
             ?>
     </table>
 </body>

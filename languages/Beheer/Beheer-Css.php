@@ -3,12 +3,12 @@ session_start();
 $pdo = new PDO('mysql:host=localhost;dbname=about-me-page;port=3306', 'root', '');
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     global $pdo;
-    $stmt = $pdo->prepare("INSERT INTO `code`(`Title`, `Carbon-Code`, `Description`, `Language`) VALUES ('Title','Carbon-Code','Description','Language')");
+    $stmt = $pdo->prepare("INSERT INTO `code`(`Title`, `Carbon-Code`, `Description`, `Language`) VALUES (:Title, :CarbonCode, :Description, :Language)");
     $stmt->execute([
-        'Title' => $_POST['titel'],
-        'Carbon-Code' => $_POST['carboncode'],
-        'Description' => $_POST['omschrijving'],
-        'Language' => $_POST['taal']
+        ':Title' => $_POST['titel'],
+        ':CarbonCode' => $_POST['carboncode'],
+        ':Description' => $_POST['omschrijving'],
+        ':Language' => '2'
     ]);
 }
 ?>
@@ -39,7 +39,6 @@ include '../../nav.php';
         <input name="omschrijving" type="text">
         <label for="carboncode">Carbon iFrame</label>
         <textarea name="carboncode" cols="30" rows="10"></textarea>
-        <input name="taal" type="hidden" value="2">
         <input type="submit">
 </form>
 </div>

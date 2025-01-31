@@ -1,11 +1,11 @@
 <?php
 function savetodb(){
     $pdo = new PDO('mysql:host=localhost;dbname=about-me-page;port=3306', 'root', '');
-    $stmt = $pdo->prepare("INSERT INTO accounts (username, password, type) VALUES (:username, :password, :type)");
+    $stmt = $pdo->prepare("INSERT INTO accounts (username, password, type, admin) VALUES (:username, :password, :type, :admin)");
     $stmt->execute([
         'username' => $_POST['username'],
         'password' => $_POST['password'],
-        'type' => 1
+        'type' => 1,
     ]);
     header("Location: completed.php");
     exit;
